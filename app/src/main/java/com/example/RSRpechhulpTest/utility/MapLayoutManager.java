@@ -11,7 +11,7 @@ import com.example.RSRpechhulpTest.R;
 /**
  * Manages the layout changes that can occur in the MapsActivity
  */
-public class LayoutManager {
+public class MapLayoutManager {
     //Layout parts
     private ConstraintLayout popupWrapper;
     private Button callButton;
@@ -19,8 +19,8 @@ public class LayoutManager {
 
     private Activity mActivity;
 
-    public LayoutManager(Activity mActivity) {
-        this.mActivity = mActivity;
+    public MapLayoutManager(Activity activity) {
+        mActivity = activity;
 
         popupWrapper = mActivity.findViewById(R.id.popup_wrapper);
         callButton = mActivity.findViewById(R.id.call_btn);

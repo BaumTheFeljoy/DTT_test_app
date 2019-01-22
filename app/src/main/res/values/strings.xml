@@ -21,7 +21,7 @@
     <string name="call_button_2">Bel nu</string>
     <string name="cost">Belkosten</string>
     <string name="cost_info">Voor dit nummer betaalt u uw gebruikelijke belkosten</string>
-    <string name="Rsr_number">tel:+319007788990</string>
+    <string name="rsr_number">tel:+319007788990</string>
     <string name="location_null">Geen locatie gevonden.</string>
     <string name="no_network_message">Uw netwerk is uitgeschakeld. Schakel het alstublieft in om door te gaan.</string>
     <string name="network_off">Netwerk is uitgeschakeld</string>

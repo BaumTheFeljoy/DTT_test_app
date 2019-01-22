@@ -32,28 +32,28 @@ public class CustomLocationManager {
     private MapManager mapManager;
     private Activity mActivity;
 
-    private FusedLocationProviderClient mFusedLocationClient;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     private Boolean LocationUpdatesRunning = false;
-
 
     public CustomLocationManager(Activity activity, GoogleMap googleMap) {
         mActivity = activity;
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mActivity);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mActivity);
 
         mapManager = new MapManager(googleMap, mActivity);
     }
 
-    //Gets the most recent available location, saves it if the result is not null
+    /**
+     * Gets the most recent available location, saves it if the result is not null
+     */
     public void getDeviceLocation() {
-        try {Task locationResult = mFusedLocationClient.getLastLocation();
+        try {Task locationResult = fusedLocationProviderClient.getLastLocation();
             locationResult.addOnCompleteListener(mActivity, new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
                     if (task.isSuccessful() && task.getResult() != null) {
                         saveLocation(task.getResult());
-
                     } else {
                         Log.d("log", "Current location is null. Using defaults.");
                         Log.e("log", "Exception: %s", task.getException());
@@ -66,7 +66,10 @@ public class CustomLocationManager {
             }
     }
 
-    //Save the most recent location and update marker on map
+    /**
+     * Save the most recent location and update marker on map
+     * @param location new location to be saved and set the marker to
+     */
     private void saveLocation(Location location) {
         try {
             mapManager.updateMarker(new LatLng(location.getLatitude(), location.getLongitude()));
@@ -75,9 +78,10 @@ public class CustomLocationManager {
         }
     }
 
-
-    //Trigger new location updates at interval
-    //source: https://github.com/codepath/android_guides/wiki/Retrieving-Location-with-LocationServices-API
+    /**
+     * Trigger new location updates at interval
+     * source: https://github.com/codepath/android_guides/wiki/Retrieving-Location-with-LocationServices-API
+     */
     //TODO: add stopLocationUpdates method and call in MapActivity at onPause()
     public void startLocationUpdates() {
 
@@ -106,7 +110,7 @@ public class CustomLocationManager {
             if (ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            mFusedLocationClient.requestLocationUpdates(mLocationRequest, new LocationCallback() {
+            fusedLocationProviderClient.requestLocationUpdates(mLocationRequest, new LocationCallback() {
                         @Override
                         public void onLocationResult(LocationResult locationResult) {
                             if(locationResult.getLastLocation() != null){

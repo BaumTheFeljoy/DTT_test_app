@@ -3,7 +3,6 @@ package com.example.RSRpechhulpTest.utility;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.RSRpechhulpTest.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,7 +18,7 @@ import java.util.Locale;
 /**
  * Manages the InfoWindow, InfoWindowContents and the position of the marker on the map
  */
-public class MapManager extends AppCompatActivity{
+public class MapManager {
     private final static float ZOOM_LEVEL = 16.0f;  //Default zoom level on launch
 
     private GoogleMap mMap;
@@ -29,8 +28,8 @@ public class MapManager extends AppCompatActivity{
     private String address = "default";
     private Boolean initialPositionSet = false;
 
-    public MapManager(GoogleMap mMap,Context context) {
-        this.mMap = mMap;
+    public MapManager(GoogleMap googleMap, Context context) {
+        mMap = googleMap;
         mContext = context;
         mMap.moveCamera(CameraUpdateFactory.zoomTo(ZOOM_LEVEL));
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(context));
@@ -38,7 +37,9 @@ public class MapManager extends AppCompatActivity{
         initMarker();
     }
 
-    //Adds marker with initial values to map but keeps it hidden
+    /**
+     * Adds marker with initial values to map but keeps it hidden
+     */
     private void initMarker(){
         marker = mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(52, 4))
@@ -49,7 +50,10 @@ public class MapManager extends AppCompatActivity{
         marker.setTag(0);
     }
 
-    //Updates the marker with new Address information and position
+    /**
+     * Updates the marker with new Address information and position
+     * @param latLng Latitude and Longitude of the new marker position
+     */
     public void updateMarker(LatLng latLng){
         getAddress(latLng);
 
@@ -64,7 +68,10 @@ public class MapManager extends AppCompatActivity{
         }
     }
 
-    //Calculates the Adress from LatLng coordinates using a Geocoder
+    /**
+     * Calculates the address from LatLng coordinates using a Geocoder
+     * @param latLng Latitude and Longitude of the address to be calculated
+     */
     public void getAddress(LatLng latLng){
         Geocoder geocoder;
         List<Address> addresses = null;

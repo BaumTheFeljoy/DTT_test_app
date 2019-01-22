@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    //Calculate dpWidth of the device screen
+    /**
+     * Calculate dpWidth of the device screen
+     */
     private void determineDisplayWidth() {
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics ();
@@ -45,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Toolbar options selected method with easy expandability
+    /**
+     * Toolbar options selected method with easy expandability
+     * @param item The selected item
+     * @return boolean depending on success of call
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){

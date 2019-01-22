@@ -4,55 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/main_bg">
+    tools:context=".MainActivity">
 
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimaryMiddle"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+    </View>
+
     <Button
         android:id="@+id/button_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/main_btn_bg"
         android:drawableStart="@drawable/main_btn_warning"
         android:drawableLeft="@drawable/main_btn_warning"
         android:onClick="openMapsActivity"
-        android:paddingLeft="45dp"
+        android:paddingLeft="30dp"
         android:stateListAnimator="@null"
         android:text="@string/main_btn_text"
         android:textColor="#FFF"
-        app:layout_constraintBottom_toTopOf="@id/button_about"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBegin"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
     <Button
         android:id="@+id/button_about"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="70dp"
         android:background="@drawable/main_btn_bg"
         android:drawableStart="@drawable/main_i"
         android:drawableLeft="@drawable/main_btn_warning"
         android:onClick="openAboutActivity"
-        android:paddingLeft="45dp"
+        android:paddingLeft="30dp"
         android:stateListAnimator="@null"
         android:text="Over RSR"
         android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBegin" />
 
-
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBegin"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+         />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.81"
+        />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.93"
+        />
 
 
 </android.support.constraint.ConstraintLayout>

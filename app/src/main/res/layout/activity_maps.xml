@@ -19,6 +19,14 @@
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimaryMiddle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <TextView
         android:visibility="gone"
         android:id="@+id/darken_map"
@@ -67,6 +75,7 @@
             android:alpha="0.9"
             android:background="@drawable/main_btn_bg"
             android:drawableStart="@drawable/main_btn_close"
+            android:drawablePadding="12dp"
             android:onClick="buttonPressed"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
@@ -87,7 +96,7 @@
                 android:alpha=".9">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/popup_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -102,7 +111,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/popup_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -116,7 +125,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/dial_btn"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/popup_title" />
 
                 <Button
                     android:id="@+id/dial_btn"
@@ -127,8 +136,7 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/main_btn_bg"
                     android:drawableStart="@drawable/main_btn_phone"
-                    android:drawableLeft="@drawable/main_btn_phone"
-                    android:paddingLeft="25dp"
+                    android:paddingStart="25dp"
                     android:stateListAnimator="@null"
                     android:text="@string/call_button_2"
                     android:onClick="dialNumber"
